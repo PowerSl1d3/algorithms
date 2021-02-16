@@ -3,7 +3,17 @@
 #include <string>
 #include <vector>
 
-//ID удачной посылки: 47960600
+//ID удачной посылки: 48054601
+
+uint8_t get_hands_from_cin() {
+
+    uint8_t hands;
+
+    std::cin >> hands;
+
+    return (hands - '0') * 2;
+
+}
 
 std::vector<std::string> fill_trainer_from_input() {
 
@@ -49,11 +59,7 @@ uint8_t play_game(uint8_t hands, const std::vector<uint8_t>& counter_of_buttons)
 
 int main() {
 
-    uint8_t hands;
-
-    std::cin >> hands;
-    std::cin.ignore();
-    hands = (hands - '0') * 2;
+    const uint8_t hands = get_hands_from_cin();
 
     const std::vector<std::string> trainer = fill_trainer_from_input();
 
@@ -61,7 +67,7 @@ int main() {
 
     const uint8_t score = play_game(hands, counter_of_buttons);
 
-    std::cout << static_cast<uint32_t>(score);
+    std::cout << +score;
 
     return 0;
 }
